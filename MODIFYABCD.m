@@ -15,7 +15,7 @@ nmax =100;
 resaultan = zeros(1,100);
 for n = 1:100
     resault =debye(n,m,x);
-resaultan(n) =resault(1);
+resaultan(n) =resault(4);
 end
 
 plot(1:100,real(resaultan),'b*-')

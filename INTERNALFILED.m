@@ -25,7 +25,8 @@ Eafea02 = 0; %第二级fea临时值
 for n=1:Nmax
     Cnpw = 1/(1i*k)*(-1i)^n*(2*n+1)/(n*(n+1));
     Feanr = sqrt(pi*R/2)*besselj(n+1/2,R);
-    Feanrp =pi^(1/2)*(besselj(n - 1/2, R) - (besselj(n + 1/2, R)*(n + 1/2))/R)*(R/2)^(1/2) + (pi^(1/2)*besselj(n + 1/2, R))/(4*(R/2)^(1/2));
+    Feanrp =sqrt(pi/2)*(1/2)*R^(-1/2)*besselj(n+0.5,R)+sqrt(pi*R/2)*(1/2)*(besselj(n-0.5,R)-besselj(n+1.5,R));
+%     Feanrp =pi^(1/2)*(besselj(n - 1/2, R) - (besselj(n + 1/2, R)*(n + 1/2))/R)*(R/2)^(1/2) + (pi^(1/2)*besselj(n + 1/2, R))/(4*(R/2)^(1/2));
     
 %     CN =ABCD(3,n);
 %     DN =ABCD(4,n);
