@@ -20,7 +20,7 @@ complex =1.33;
 a = 0.5;
 
 r = 10^(-8):0.05:1;
-theta = 10^(-8):10*pi/180:2*pi;
+theta = 10^(-8):pi/180:2*pi;
 
 ETOTALINFILE = zeros(length(r),length(theta));
 
@@ -51,6 +51,8 @@ end
 
 % xlswrite('d:\ETOTALINFILE.xls', ETOTALINFILE, 'sheet1');
 
+% pcolor(r'*cos(theta),r'*sin(theta),ETOTALINFILE);
+% shading interp
 pcolor([r'*cos(theta),r'*cos(theta(1))],[r'*sin(theta),r'*sin(theta(1))],[ETOTALINFILE,ETOTALINFILE(:,1)]);
 title('高斯波束下球形粒子散射特性')
 shading interp
