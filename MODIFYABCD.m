@@ -12,16 +12,27 @@ r = 5;
 x = 2*pi*r/lemat;
 nmax =100;
 
-% resault = Mie_abcd_second(nmax,m,x);
-resault = Mie_abcd2_gaussin(nmax,m,x);
+resaultan = zeros(1,100);
+for n = 1:100
+    resault =debye(n,m,x);
+resaultan(n) =resault(1);
+end
 
-[ran,col] =size(resault);
-
-plot(1:col,real(resault(3,:))','b*-')
+plot(1:100,real(resaultan),'b*-')
 hold on
-plot(1:col,imag(resault(3,:))','r*-')
+plot(1:100,imag(resaultan),'r*-')
 
-title('an的实部与虚部与n的关系')
+% resault = Mie_abcd_second(50,m,x);
+% % resault = Mie_abcd2_gaussin(100,m,x);
+% 
+% resault(:,50)
+% [ran,col] =size(resault);
+% 
+% plot(1:col,real(resault(3,:))','b*-')
+% hold on
+% plot(1:col,imag(resault(3,:))','r*-')
+
+title('an的实部与虚部与n的关系 采用debye级数获取')
 ylabel('an 的实部与虚部')
 xlabel('n') 
 grid on
