@@ -17,7 +17,7 @@ ErsTemp02 = 0; %第二级Ers临时值
 EsthetaTemp02 = 0; %第二级theta临时值
 Esfea02 = 0; %第二级fea临时值
 
-ABCD = Mie_abcd2_gaussin(Nmax,complex,k*a);
+% ABCD = Mie_abcd2_gaussin(Nmax,complex,k*a);
 
 for n=1:Nmax
     Cnpw = 1/(1i*k)*(-1i)^n*(2*n+1)/(n*(n+1));
@@ -27,11 +27,13 @@ for n=1:Nmax
         1i - (besselj(n + 1/2, R)*(n + 1/2))/R + (bessely(n + 1/2, R)*(n + 1/2)*1i)/R) + ...
         (pi^(1/2)*(besselj(n + 1/2, R) - bessely(n + 1/2, R)*1i))/(4*(R/2)^(1/2));
     
-    AN =ABCD(1,n);
-    BN =ABCD(2,n);
+%     AN =ABCD(1,n);
+%     BN =ABCD(2,n);
     
     %     AN =-ABCD(1,n);
     %     BN =-ABCD(2,n);
+    
+    reasultan = debye(n,complex,k*a);
     
     EsiTemp01 = 0;  %第一级Ers临时值
     EsthetaTemp01 = 0; %第一级theta临时值
@@ -42,10 +44,11 @@ for n=1:Nmax
         pit_resault = PITAUNM(theta,n,abs(m));
         
         pinm = pit_resault(1);
-        taunm = pit_resault(2);
+        taunm = pit_resault(2);        
         
-        Anm =AN*BSCOEFFICIENTS(x0,y0,z0,l,k,w0,m,n,1);
-        Bnm = BN*BSCOEFFICIENTS(x0,y0,z0,l,k,w0,m,n,0);
+        
+        Anm =reasultan(1)*BSCOEFFICIENTS(x0,y0,z0,l,k,w0,m,n,1);
+        Bnm = reasultan(2)*BSCOEFFICIENTS(x0,y0,z0,l,k,w0,m,n,0);
         
         EsiTemp01 = EsiTemp01+Cnpw*n*(n+1)*...
             Epsnr*Anm*pinm*sin(theta)*exp(1i*m*fea);

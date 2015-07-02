@@ -20,7 +20,7 @@ complex =1.33;
 a = 0.5;
 
 r = 10^(-8):0.05:1;
-theta = 10^(-8):pi/180:2*pi;
+theta = 10^(-8):10*pi/180:2*pi;
 
 ETOTALINFILE = zeros(length(r),length(theta));
 
