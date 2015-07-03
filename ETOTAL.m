@@ -13,14 +13,14 @@ clc;clear;
 E0 = 1;
 lemat = 0.6328;
 fea = 0;
-x0 = 0 ;y0 = 0;z0 = 0;
-w0 = 100;
+x0 = 0.5 ;y0 = 0;z0 = 0;
+w0 = 0.1;
 l = (2*pi/lemat)*(w0^2);
 complex =1.33;
-a = 0.5;
+a = 10;
 
-r = 10^(-8):0.05:1;
-theta = 10^(-8):pi/180:2*pi;
+r = 10^(-8):0.1:15;
+theta = 10^(-8):20*pi/180:2*pi;
 
 ETOTALINFILE = zeros(length(r),length(theta));
 
